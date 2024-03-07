@@ -5,8 +5,6 @@ import java.util.Scanner
 fun main() {
     val commandReader = CommandReader(Scanner(System.`in`))
     val peopleInfo = mutableMapOf<String, PersonInfo>()
-    val phoneCommand = Regex("add (.+) phone (.+)")
-    val emailCommand = Regex("add (.+) email (.+)")
     println("Наберите help чтобы получить справку по командам")
     while (commandReader.readCommand() != "exit") {
         val command = commandReader.command
@@ -16,14 +14,16 @@ fun main() {
             println("Добавление email: add <Имя> email <Адрес электронной почты>")
             println("Выход: exit")
         } else {
+            val phoneCommandRegex = Regex("add (.+) phone (.+)")
+            val emailCommandRegex = Regex("add (.+) email (.+)")
             //прроверка на сложные команды
-            command.matchRegex(phoneCommand) {
+            command.matchRegex(phoneCommandRegex) {
                 val name = get(1)?.value.throwIfNull()
                 val phone = get(2)?.value.throwIfNull()
                 peopleInfo.compute(name) { key, value ->
                     PersonInfo(key, value?.phone ?: phone, value?.email)
                 }
-            }.matchAnother(emailCommand) {
+            }.matchAnother(emailCommandRegex) {
                 val name = get(1)?.value.throwIfNull()
                 val email = get(2)?.value.throwIfNull()
                 peopleInfo.compute(name){ key, value ->
