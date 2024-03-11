@@ -1,4 +1,4 @@
-package lesson1.hw
+package commandinterpreter
 
 import java.util.Scanner
 
