@@ -9,7 +9,7 @@ class Help(cmd: String): AbstractCommand(Regex("help"), cmd) {
         println("Справка по командам")
         println("Добавление телефона: add <Имя> phone <Номер телефона>")
         println("Добавление email: add <Имя> email <Адрес электронной почты>")
-        println("Показать последнего добавленного человека: show")
+        println("Показать информацию о человеке: show <Имя>")
         println("Выход: exit")
     }
 }
