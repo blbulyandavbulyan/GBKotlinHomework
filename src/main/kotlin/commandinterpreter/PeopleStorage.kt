@@ -17,4 +17,5 @@ class PeopleStorage{
     fun remove(name: String) {
         persons.remove(name)
     }
+    override fun toString(): String = persons.values.toString()
 }
