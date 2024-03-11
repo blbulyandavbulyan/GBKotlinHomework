@@ -13,6 +13,9 @@ class AddPhone(cmd: String) : AbstractCommand(
         val matchGroupCollection = regex.find(cmd)?.groups ?: throw RuntimeException("Command is not valid!")
         val name = matchGroupCollection[1]?.value.throwIfNull()
         val phone = matchGroupCollection[2]?.value.throwIfNull()
-        peopleStorage[name]?.let { it.phone = phone } ?: peopleStorage.add(Person(name, phone, null))
+        peopleStorage[name]?.addPhone(phone) ?: peopleStorage.add(Person(name).let {
+            it.addPhone(phone)
+            return@let it
+        })
     }
 }
