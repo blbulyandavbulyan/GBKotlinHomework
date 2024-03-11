@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
-        <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
+        <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
         <kotlin.version>1.9.22</kotlin.version>
     </properties>
 
@@ -61,6 +61,14 @@
                 <version>1.6.0</version>
                 <configuration>
                     <mainClass>MainKt</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>10</source>
+                    <target>10</target>
                 </configuration>
             </plugin>
         </plugins>
