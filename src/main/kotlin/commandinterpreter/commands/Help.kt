@@ -1,7 +1,9 @@
 package commandinterpreter.commands
 
 import commandinterpreter.PeopleStorage
+import commandinterpreter.annotations.UsedViaReflection
 
+@UsedViaReflection
 class Help(cmd: String): AbstractCommand(Regex("help"), cmd) {
     override fun execute(peopleStorage: PeopleStorage) {
         println("Справка по командам")
