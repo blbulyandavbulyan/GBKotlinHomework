@@ -1,7 +1,7 @@
 package commandinterpreter.commands
 
 import commandinterpreter.PeopleStorage
-import commandinterpreter.PersonInfo
+import commandinterpreter.Person
 import commandinterpreter.throwIfNull
 
 class AddPhone(cmd: String) : AbstractCommand(
@@ -12,6 +12,6 @@ class AddPhone(cmd: String) : AbstractCommand(
         val matchGroupCollection = regex.find(cmd)?.groups ?: throw RuntimeException("Command is not valid!")
         val name = matchGroupCollection[1]?.value.throwIfNull()
         val phone = matchGroupCollection[2]?.value.throwIfNull()
-        peopleStorage[name]?.let { it.phone = phone } ?: PersonInfo(name, phone, null)
+        peopleStorage[name]?.let { it.phone = phone } ?: Person(name, phone, null)
     }
 }
