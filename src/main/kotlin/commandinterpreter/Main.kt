@@ -3,11 +3,11 @@ package commandinterpreter
 import java.util.Scanner
 
 fun main() {
-    val commandReader = CommandReader(Scanner(System.`in`))
+    val lineReader = LineReader(Scanner(System.`in`))
     val peopleInfo = mutableMapOf<String, Person>()
     println("Наберите help чтобы получить справку по командам")
-    while (commandReader.readCommand() != "exit") {
-        val command = commandReader.command
+    while (lineReader.readLine() != "exit") {
+        val command = lineReader.command
         if (command == "help") {
             println("Справка по командам")
             println("Добавление телефона: add <Имя> phone <Номер телефона>")
