@@ -1,0 +1,3 @@
+package commandinterpreter.json
+
+interface JsonContext
