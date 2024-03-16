@@ -12,8 +12,8 @@ class AddEmail(cmd: String) :
         val matchGroupCollection = regex.find(cmd)?.groups ?: throw RuntimeException("Command is not valid!")
         val name = matchGroupCollection[1]?.value.throwIfNull()
         val email = matchGroupCollection[2]?.value.throwIfNull()
-        peopleStorage[name]?.addEmail(email) ?: peopleStorage.add(Person(name).let {
-            it.addEmail(email)
+        peopleStorage[name]?.emails?.add(email) ?: peopleStorage.add(Person(name).let {
+            it.emails.add(email)
             return@let it
         })
     }

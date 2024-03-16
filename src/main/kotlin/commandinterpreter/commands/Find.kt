@@ -10,7 +10,7 @@ class Find(cmd: String): AbstractCommand(Regex("find (.+)"), cmd){
         val matchGroupCollection = regex.find(cmd)?.groups ?: throw RuntimeException("Command is not valid!")
         val emailOrPhone = matchGroupCollection[1]?.value.throwIfNull()
         println(peopleStorage.iterator().asSequence()
-            .filter { it.containsEmail(emailOrPhone) || it.containsPhone(emailOrPhone) }
+            .filter { emailOrPhone in it.emails || emailOrPhone in it.phones }
             .map { it.name }
             .toList())
     }
