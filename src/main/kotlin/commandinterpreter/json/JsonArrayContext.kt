@@ -10,5 +10,18 @@ class JsonArrayContext: JsonContext {
         jsonObjectContext.init()
         list+=jsonObjectContext
     }
-    override fun toString(): String = list.toString()
+    override fun toString(): String{
+        return buildString {
+            append("[")
+            val lastIndex = list.size - 1
+            list.forEachIndexed { index, item->
+                when (item) {
+                    is String -> append("\"$item\"")
+                    else -> append(item)
+                }
+                if(index != lastIndex)append(",")
+            }
+            append("]")
+        }
+    }
 }

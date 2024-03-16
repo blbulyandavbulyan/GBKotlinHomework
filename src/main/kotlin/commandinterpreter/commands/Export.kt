@@ -3,7 +3,6 @@ package commandinterpreter.commands
 import commandinterpreter.PeopleStorage
 import commandinterpreter.annotations.UsedViaReflection
 import commandinterpreter.json.JSON
-import commandinterpreter.json.JSON.`object`
 import commandinterpreter.throwIfNull
 import java.io.File
 
