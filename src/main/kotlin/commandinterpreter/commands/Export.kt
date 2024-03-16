@@ -15,11 +15,9 @@ class Export(cmd: String) : AbstractCommand(Regex("export (.+)"), cmd) {
         File(path).writeText(JSON.array {
                 for (person in peopleStorage) {
                     item {
-                        `object` {
-                            "emails" with person.emails
-                            "phones" with person.phones
-                            "name" with person.name
-                        }
+                        "emails" with person.emails
+                        "phones" with person.phones
+                        "name" with person.name
                     }
                 }
             }.toString())
