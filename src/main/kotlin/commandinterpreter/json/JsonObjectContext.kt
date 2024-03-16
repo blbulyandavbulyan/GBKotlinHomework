@@ -8,9 +8,11 @@ class JsonObjectContext: JsonContext {
     override fun toString(): String {
         return buildString {
             append("{")
-            for (entry in map) {
-                append("\"${entry.key}\":")
-                append(entry.value)
+            val entries = map.entries
+            val lastIndex = entries.size - 1
+            entries.forEachIndexed { index, entry ->
+                append("\"${entry.key}\":${entry.value}")
+                if (index != lastIndex) append(",")
             }
             append("}")
         }
